@@ -25,7 +25,7 @@ const renderMovies = (filter = '') => {
         console.log('others ',otherProps);
         // const { title: movieTitle } = info;
         let { getFormattedTitle } = movie;
-        getFormattedTitle = getFormattedTitle.bind(movie)
+        // getFormattedTitle = getFormattedTitle.bind(movie)
         let text = getFormattedTitle() + ' - '
         for (const key in info) {
             if (key !== 'title') {
@@ -58,7 +58,9 @@ const addMovieHandler = () => {
      },
         id: Math.random(),
         getFormattedTitle() {
+            console.log(this)
             return this.info.title.toUpperCase();
+            
         }
     };
 
