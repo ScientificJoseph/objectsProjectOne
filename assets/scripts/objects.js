@@ -107,7 +107,7 @@ const person2 = { ...person };
 person.age = 51;
 person.hobbies.push('Fitness')
 
-const person3 = { ...person, age: 49, hobbies:[...person.hobbies]}//tek to overwrite original vals 
+const person3 = { ...person, age: 49, hobbies:[...person.hobbies]}//tek to overwrite original valu
 const last = person.hobbies.pop()
 
 // console.log(person)
