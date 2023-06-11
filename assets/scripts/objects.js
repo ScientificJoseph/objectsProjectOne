@@ -21,10 +21,13 @@ const renderMovies = (filter = '') => {
 
     filteredMovies.forEach((movie)=>{
         const list = document.createElement('li')
-        let text = movie.info.title + ' - '
-        for (const key in movie.info) {
+        const { info, ...otherProps } = movie;
+        console.log('others ',otherProps);
+        const { title: movieTitle } = info;
+        let text = movieTitle + ' - '
+        for (const key in info) {
             if (key !== 'title') {
-                text = text + `${key}: ${movie.info[key]} `
+                text = text + `${key}: ${info[key]} `
             }
         }
         list.textContent = text
@@ -55,7 +58,7 @@ const addMovieHandler = () => {
     };
 
     movies.push(newMovie)
-    console.log(newMovie)
+    // console.log(newMovie)
 
     document.querySelectorAll('#user-input input').forEach((input)=>{
         return input.value = ""; 
@@ -80,3 +83,30 @@ const person = {
 };
 
 const anotherPerson = person;
+person.age = 50;
+
+const person2 = { ...person };
+person.age = 51;
+person.hobbies.push('Fitness')
+
+const person3 = { ...person, age: 49, hobbies:[...person.hobbies]}//tek to overwrite original vals 
+const last = person.hobbies.pop()
+
+// console.log(person)
+// console.log(anotherPerson)
+// console.log(person2)
+// console.log(person3)
+// console.log(last)
+
+// Object.assign
+
+const user = {
+    name: 'Joseph'
+}
+
+const user2 = Object.assign({}, user)
+user.name = 'Joe'
+console.log(user)
+console.log(user2)
+
+// Object Destructuring
