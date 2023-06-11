@@ -28,7 +28,7 @@ const renderMovies = (filter = '') => {
         // getFormattedTitle = getFormattedTitle.bind(movie) // prepares for function use
         let text = getFormattedTitle.call(movie) + ' - '
         for (const key in info) {
-            if (key !== 'title') {
+            if (key !== 'title' && key !== '_title') {
                 text = text + `${key}: ${info[key]} `
             }
         }
@@ -44,25 +44,37 @@ const addMovieHandler = () => {
     const extraValue = document.getElementById('extra-value').value;
 
     if (
-        title.trim() === '' ||
+        // title.trim() === '' ||
         extraName.trim() === '' ||
         extraValue.trim() === ''
     ) {
-        return
+        return;
     }
 
     const newMovie = {
         info: {
-            title,
+            // title,
+            set title(val) {
+                if (val.trim() === '') {
+                    this._title = 'DEFAULT'
+                    return
+                }
+                this._title = val
+            },
+            get title() {
+                return this._title;
+            },
             [extraName]: extraValue
      },
         id: Math.random(),
         getFormattedTitle() {
             console.log(this)
             return this.info.title.toUpperCase();
-            
         }
     };
+
+    newMovie.info.title = title;
+    console.log(newMovie.info.title)
 
     movies.push(newMovie)
     document.querySelectorAll('#user-input input').forEach((input)=>{
@@ -73,6 +85,7 @@ const addMovieHandler = () => {
 };
 
 const searchMovieHandler = () => {
+    console.log(this)
     const filterTerm = document.getElementById('filter-title').value;
     renderMovies(filterTerm);
     document.getElementById('filter-title').value = '';
@@ -109,10 +122,22 @@ const user = {
     name: 'Joseph'
 }
 
-const user2 = Object.assign({}, user)
-user.name = 'Joe'
-console.log(user)
-console.log(user2)
+// const user2 = Object.assign({}, user)
+// user.name = 'Joe'
+// console.log(user)
+// console.log(user2)
 
 // Object Destructuring
-// this
+// this and arrow functions
+
+const members = {
+    teamName: 'Blue Rockets',
+    people: ['Max', 'Joseph'],
+    getTemMembers(){
+        this.people.forEach(p =>{
+            console.log(p + ' - ' + this.teamName)
+        })
+    }
+};
+
+members.getTemMembers()
