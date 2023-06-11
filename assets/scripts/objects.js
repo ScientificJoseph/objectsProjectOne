@@ -73,7 +73,7 @@ const searchMovieHandler = () => {
 addMovieBtn.addEventListener('click', addMovieHandler);
 searchBtn.addEventListener('click', searchMovieHandler)
 
-// Object Spread Operator
+// Object Spread Operator.
 const person = {
     name: 'Joseph',
     hobbies: ['Music','Coding']
