@@ -23,8 +23,9 @@ const renderMovies = (filter = '') => {
         const list = document.createElement('li')
         const { info, ...otherProps } = movie;
         console.log('others ',otherProps);
-        const { title: movieTitle } = info;
-        let text = movieTitle + ' - '
+        // const { title: movieTitle } = info;
+        // const { getFormattedTitle } = movie;
+        let text = movie.getFormattedTitle() + ' - '
         for (const key in info) {
             if (key !== 'title') {
                 text = text + `${key}: ${info[key]} `
@@ -54,16 +55,17 @@ const addMovieHandler = () => {
             title,
             [extraName]: extraValue
      },
-        id: Math.random()
+        id: Math.random(),
+        getFormattedTitle() {
+            return this.info.title.toUpperCase();
+        }
     };
 
     movies.push(newMovie)
-    // console.log(newMovie)
-
     document.querySelectorAll('#user-input input').forEach((input)=>{
         return input.value = ""; 
     })
-   
+
     renderMovies()
 };
 
@@ -110,3 +112,4 @@ console.log(user)
 console.log(user2)
 
 // Object Destructuring
+// this
