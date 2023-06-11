@@ -41,23 +41,21 @@ const addMovieHandler = () => {
         return
     }
 
-
     const newMovie = {
         info: {
             title,
             [extraName]: extraValue
-
      },
         id: Math.random()
     };
 
     movies.push(newMovie)
     console.log(newMovie)
+
     document.querySelectorAll('#user-input input').forEach((input)=>{
-        return input.value = ""  
+        return input.value = ""; 
     })
     renderMovies()
-
 }
-addMovieBtn.addEventListener('click', addMovieHandler)
+addMovieBtn.addEventListener('click', addMovieHandler);
 
