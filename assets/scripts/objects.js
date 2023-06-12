@@ -128,6 +128,7 @@ const user = {
 // console.log(user2)
 
 // Object Destructuring
+
 // this and arrow functions
 
 const members = {
