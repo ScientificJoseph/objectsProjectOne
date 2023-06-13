@@ -101,7 +101,7 @@ const person = {
 };
 
 const anotherPerson = person;
-person.age = 50;
+person.age = 48;
 
 const person2 = { ...person };
 person.age = 51;
