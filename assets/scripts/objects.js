@@ -11,7 +11,6 @@ const renderMovies = (filter = '') => {
         return
     } else {
         movieList.classList.add('visible')
-
     }
     movieList.innerHTML = '';
 
